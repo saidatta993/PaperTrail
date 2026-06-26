@@ -231,9 +231,7 @@ export default function PaperTrailApp() {
     if (!session) return
     try {
       await fetch(`${process.env.NEXT_PUBLIC_API_URL}/documents/${doc.id}`, {
-        method: 'DELETE', headers: { Authorization: `Bearer ${session.access_token}` },
       })
-      if (selectedDoc?.id === doc.id) setSelectedDoc(null)
       fetchDocs(session.access_token)
     } catch (e) { console.error(e) }
   }
